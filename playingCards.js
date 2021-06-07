@@ -1,3 +1,4 @@
+//This `class` structure is being kept in case of needing it with React.js
 /* export class Card {
     constructor(number, suit) {
         this.number = number;
@@ -5,6 +6,7 @@
     }
 } */
 
+//Factory Function set to produce card `object`s
 const cardMaker = (number, suit) => {
     return {
         number,
@@ -12,6 +14,7 @@ const cardMaker = (number, suit) => {
     }
 }
 
+//This function will produce a full deck of 52 cards, 13 of each suit.
 export const createDeck = () => {
     let deck = [];
     let cardSelection = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
