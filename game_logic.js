@@ -1,6 +1,11 @@
 import { createDeck } from './playingCards.js'
 import { shuffleTheDeck, dealTheHand } from './dealingLogic.js'
 
+//This will draw a card from the top of the shuffled game deck and place it in the user's hand.
+const drawACard = deck => {
+    playerOneHand.push(currentGameDeck.shift())
+}
+
 //Hand is traditionally played with two full deck of cards.
 let gameDeck = createDeck();
 let gameDeckTwo = createDeck();

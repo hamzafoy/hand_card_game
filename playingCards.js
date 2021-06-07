@@ -30,6 +30,6 @@ export const createDeck = () => {
     for (let i = 0; i < 13; i++) {
         deck.push(cardMaker(cardSelection[i], 'diamond'))
     }
-    console.log(deck.length);
+    //console.log(deck.length);
     return deck;
 }
