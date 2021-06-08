@@ -8,5 +8,14 @@
   },
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamzafoy/hand_card_game.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/hamzafoy/hand_card_game/issues"
+  },
+  "homepage": "https://github.com/hamzafoy/hand_card_game#readme"
 }
