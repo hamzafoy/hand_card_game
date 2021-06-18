@@ -26,15 +26,15 @@ After the game starts, each turn **must consist** of. . .
 
 1. Drawing one card
 2. Organizing their hand into sets
-3. Playing a full hand* or laying down cards equivalent to **51** points
+3. Playing a full hand* or laying down cards equivalent to **51** points<br>
 *a hand consists of all sets in addition to the card that they must discard to end their turn.
 4. Lastly, discarding one card
 
 #### A set can be composed as follows. . .
-- 3 or more cards, of the same suit, in order*
+- 3 or more cards, of the same suit, in order*<br>
 *Ex: A, 2, 3 - 3, 4, 5, 6 - 10, J, Q, K, A
 - 3 or more cards, of different suits, of the same number or symbol
 
 #### A wildcard is. . .
-The `A` of a pre-determined suit in the beginning of the game. This wildcard can be used in place of any card you may not have*
+The `A` of a pre-determined suit in the beginning of the game. This wildcard can be used in place of any card you may not have*<br>
 *Ex: You have a 6 [&spades;] & a 8 [&spades;] & a wildcard. That wildcard can be used as a 7 [&spades;] to complete a set.
