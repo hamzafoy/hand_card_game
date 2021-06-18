@@ -7,11 +7,12 @@
 } */
 
 //Factory Function set to produce card `object`s
-const cardMaker = (number, suit, value) => {
+const cardMaker = (number, suit, value, id) => {
     return {
         number,
         suit,
-        value
+        value,
+        id
     }
 }
 
@@ -31,6 +32,21 @@ export const createDeck = () => {
     }
     for (let i = 0; i < 13; i++) {
         deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i]))
+    }
+    for (let i = 0; i < 13; i++) {
+        deck.push(cardMaker(cardSelection[i], 'heart', cardValues[i]))
+    }
+    for (let i = 0; i < 13; i++) {
+        deck.push(cardMaker(cardSelection[i], 'club', cardValues[i]))
+    }
+    for (let i = 0; i < 13; i++) {
+        deck.push(cardMaker(cardSelection[i], 'spade', cardValues[i]))
+    }
+    for (let i = 0; i < 13; i++) {
+        deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i]))
+    }
+    for (let i = 0; i < 104; i++) {
+        deck[i].id = i+1;
     }
     //console.log(deck.length);
     return deck;

@@ -8,6 +8,7 @@ export const shuffleTheDeck = deck => {
     return deck
 }
 
+
 //This function takes cards from the deck and deals them into each player's hand which is returned as an object for destructuring.
 export const dealTheHand = deck => {
     let playerOneHand = [];
