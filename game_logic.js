@@ -21,6 +21,11 @@ class Player {
     drawCard() {
         this._gameCards.push(currentGameDeck.shift())
     }
+
+    discardCard(id) {
+        let newDeck = this._gameCards.filter(card => card.id !== id);
+        this._gameCards = newDeck;
+    }
 }
 
 /*---
@@ -34,5 +39,4 @@ class Player {
 //console.log(currentGameDeck);
 
 let hamzaFoy = new Player('Hamza Foy');
-hamzaFoy.drawCard();
 console.log(hamzaFoy)
