@@ -16,7 +16,7 @@ const cardMaker = (number, suit, value, id) => {
     }
 }
 
-//This function will produce a full deck of 52 cards, 13 of each suit.
+//This function will produce two full decks of 52*2=104 cards, 13*2=26 of each suit.
 export const createDeck = () => {
     let deck = [];
     let cardSelection = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -51,3 +51,6 @@ export const createDeck = () => {
     //console.log(deck.length);
     return deck;
 }
+
+//Hand is traditionally played with two full deck of cards which `createDeck` prepares.
+export var gameDeck = createDeck();
