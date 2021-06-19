@@ -31,7 +31,7 @@ class Player {
     constructor(name) {
         this.name = name;
         this._gameCards = dummyHand;
-        this._sets = [];
+        this._set = [];
     }
 
     drawCard() {
@@ -43,15 +43,18 @@ class Player {
         this._gameCards = newDeck;
     }
 
-    createSet(id) {
+    addToSet(id) {
         let cardToBeAdded = this._gameCards.find(card => card.id === id);
         let newDeck = this._gameCards.filter(card => card.id !== id);
-        this._sets.push(cardToBeAdded);
+        this._set.push(cardToBeAdded);
         this._gameCards = newDeck;
     }
 
-    addSet() {
-        this._set = [];
+    removeFromSet(id) {
+        let cardToBeRemoved = this._set.find(card => card.id === id);
+        let newDeck = this._set.filter(card => card.id !== id);
+        this._gameCards.push(cardToBeRemoved);
+        this._set = newDeck;
     }
 }
 
@@ -66,7 +69,8 @@ class Player {
 //console.log(currentGameDeck);
 
 let hamzaFoy = new Player('Hamza Foy');
-hamzaFoy.createSet(56)
-hamzaFoy.createSet(41)
-hamzaFoy.addSet();
+hamzaFoy.addToSet(56)
+hamzaFoy.addToSet(41)
+hamzaFoy.removeFromSet(56);
+hamzaFoy.removeFromSet(41);
 console.log(hamzaFoy)
