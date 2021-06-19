@@ -34,6 +34,12 @@ class Player {
         this._set = [];
     }
 
+    getCardInfo() {
+        for(let i = this._gameCards.length-1; i >= 0; i--) {
+            console.log(`You have the ${this._gameCards[i].number} of ${this._gameCards[i].suit}`)
+        }
+    }
+
     drawCard() {
         this._gameCards.push(currentGameDeck.shift())
     }
@@ -69,8 +75,5 @@ class Player {
 //console.log(currentGameDeck);
 
 let hamzaFoy = new Player('Hamza Foy');
-hamzaFoy.addToSet(56)
-hamzaFoy.addToSet(41)
-hamzaFoy.removeFromSet(56);
-hamzaFoy.removeFromSet(41);
-console.log(hamzaFoy)
+hamzaFoy.getCardInfo();
+//console.log(hamzaFoy)
