@@ -44,9 +44,14 @@ class Player {
     }
 
     createSet(id) {
-        let cardToBeAdded = this._gameCards.filter(card => card.id === id)
-        console.log(cardToBeAdded)
-        //this._sets.push(cardToBeAdded);
+        let cardToBeAdded = this._gameCards.find(card => card.id === id);
+        let newDeck = this._gameCards.filter(card => card.id !== id);
+        this._sets.push(cardToBeAdded);
+        this._gameCards = newDeck;
+    }
+
+    addSet() {
+        this._set = [];
     }
 }
 
@@ -62,4 +67,6 @@ class Player {
 
 let hamzaFoy = new Player('Hamza Foy');
 hamzaFoy.createSet(56)
+hamzaFoy.createSet(41)
+hamzaFoy.addSet();
 console.log(hamzaFoy)
