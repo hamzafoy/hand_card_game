@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
+import { hamzaFoy } from './Logic/game_logic'
+
+let cards = hamzaFoy.getCardInfo();
+let currentCards = cards.map(card =>
+<li>{card}</li>
+);
 
 class App extends React.Component {
+
   render() {
+    
     return(
-      <h1>
+      <>
         Your current hand of cards!
-      </h1>
+        <ul>
+          {currentCards}
+        </ul>
+      </>
     )
   }
 }

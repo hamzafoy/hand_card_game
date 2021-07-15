@@ -35,9 +35,12 @@ class Player {
     }
 
     getCardInfo() {
+        let cardList = [];
         for(let i = this._gameCards.length-1; i >= 0; i--) {
-            console.log(`You have the ${this._gameCards[i].number} of ${this._gameCards[i].suit}`)
+            //console.log(`You have the ${this._gameCards[i].number} of ${this._gameCards[i].suit}`)
+            cardList.push(`You have the ${this._gameCards[i].number} of ${this._gameCards[i].suit}`)
         }
+        return cardList;
     }
 
     drawCard() {
@@ -74,6 +77,6 @@ class Player {
 //console.log(playerOneHand)
 //console.log(currentGameDeck);
 
-let hamzaFoy = new Player('Hamza Foy');
-hamzaFoy.getCardInfo();
+export let hamzaFoy = new Player('Hamza Foy');
+//hamzaFoy.getCardInfo();
 //console.log(hamzaFoy)

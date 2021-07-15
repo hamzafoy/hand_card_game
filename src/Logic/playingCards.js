@@ -52,5 +52,7 @@ export const createDeck = () => {
     return deck;
 }
 
+//console.log(createDeck());
+
 //Hand is traditionally played with two full deck of cards which `createDeck` prepares.
 export var gameDeck = createDeck();
