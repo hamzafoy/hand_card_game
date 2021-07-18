@@ -7,11 +7,12 @@
 } */
 
 //Factory Function set to produce card `object`s
-const cardMaker = (number, suit, value, id) => {
+const cardMaker = (number, suit, value, desc, id) => {
     return {
         number,
         suit,
         value,
+        desc,
         id
     }
 }
@@ -22,28 +23,28 @@ export const createDeck = () => {
     let cardSelection = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
     let cardValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'heart', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'heart', cardValues[i], `${cardSelection[i]}_h`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'club', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'club', cardValues[i], `${cardSelection[i]}_c`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'spade', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'spade', cardValues[i], `${cardSelection[i]}_s`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i], `${cardSelection[i]}_d`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'heart', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'heart', cardValues[i], `${cardSelection[i]}_h`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'club', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'club', cardValues[i], `${cardSelection[i]}_c`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'spade', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'spade', cardValues[i], `${cardSelection[i]}_s`))
     }
     for (let i = 0; i < 13; i++) {
-        deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i]))
+        deck.push(cardMaker(cardSelection[i], 'diamond', cardValues[i], `${cardSelection[i]}_d`))
     }
     for (let i = 0; i < 104; i++) {
         deck[i].id = i+1;
@@ -52,7 +53,7 @@ export const createDeck = () => {
     return deck;
 }
 
-//console.log(createDeck());
+console.log(createDeck());
 
 //Hand is traditionally played with two full deck of cards which `createDeck` prepares.
 export var gameDeck = createDeck();
