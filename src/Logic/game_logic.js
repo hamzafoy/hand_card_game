@@ -2,7 +2,7 @@ import { gameDeck } from './playingCards.js'
 import { shuffleTheDeck, dealTheHand } from './dealingLogic.js'
 
 //This shuffles each of the two produced decks from `./playingCards.js` & merges them into one whole deck of 104 cards.
-let currentGameDeck = shuffleTheDeck(gameDeck);
+export let currentGameDeck = shuffleTheDeck(gameDeck);
 
 //This variable stores the resulting two hands given to each player.
 let gameHands = dealTheHand(currentGameDeck);

@@ -1,0 +1,42 @@
+{
+	"cells": [
+		{
+			"blockId": "14f7577d-88d7-44a9-aea9-02a167f1677b",
+			"data": {
+				"formatCode": false,
+				"isPreviewing": true,
+				"text": "`&lt;PlayingCard/&gt;` Component<div><br></div><div>. . .has the following properties:</div><div><br></div><div>1. *number*: The card type.</div><div>2. *suit*: Card suit.</div><div>3. *value*: Value in terms of Hand card-game rules.</div><div>4. *src*: Image `src` path.</div><div>5. *id*: Unique `id`.</div><div><br></div><div>. . .has *no* methods.</div>"
+			},
+			"id": "14f7577d-88d7-44a9-aea9-02a167f1677b",
+			"type": "markdown"
+		}
+	],
+	"graphViewMetadata": {
+		"edges": [
+		],
+		"graph": {
+			"position": [
+				-130.08333333333337,
+				315.1388888888887
+			],
+			"zoom": 1.388888888888889
+		},
+		"nodes": [
+			{
+				"blockId": "14f7577d-88d7-44a9-aea9-02a167f1677b",
+				"dimensions": {
+					"height": 328,
+					"width": 330
+				},
+				"id": "dndnode_0",
+				"position": {
+					"x": 195,
+					"y": -210
+				}
+			}
+		]
+	},
+	"text": "",
+	"title": "Hand Game Conceptual Grok",
+	"version": 1
+}

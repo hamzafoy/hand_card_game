@@ -107,7 +107,7 @@ export {
 }
 
 export function switchStatementForCards(param) {
-    switch(param.desc) {
+    switch(param) {
         case '2_c':
         return TwoC;
         case '2_d':

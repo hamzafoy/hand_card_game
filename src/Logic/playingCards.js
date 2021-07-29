@@ -1,11 +1,3 @@
-//This `class` structure is being kept in case of needing it with React.js
-/* export class Card {
-    constructor(number, suit) {
-        this.number = number;
-        this.suit = suit;
-    }
-} */
-
 //Factory Function set to produce card `object`s
 const cardMaker = (number, suit, value, desc, id) => {
     return {
@@ -16,6 +8,7 @@ const cardMaker = (number, suit, value, desc, id) => {
         id
     }
 }
+
 
 //This function will produce two full decks of 52*2=104 cards, 13*2=26 of each suit.
 export const createDeck = () => {
@@ -53,7 +46,7 @@ export const createDeck = () => {
     return deck;
 }
 
-console.log(createDeck());
+//console.log(createDeck());
 
 //Hand is traditionally played with two full deck of cards which `createDeck` prepares.
 export var gameDeck = createDeck();
