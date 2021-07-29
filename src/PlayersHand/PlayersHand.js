@@ -27,11 +27,21 @@ class PlayersHand extends React.Component {
       ]
     }
     this.draw = this.draw.bind(this);
+    this.discard = this.discard.bind(this);
   }
 
   draw() {
     let newCard = currentGameDeck.shift();
     this.setState({ cards: [...this.state.cards, newCard] })
+  }
+
+  discard() {
+    let currentArray = [...this.state.cards]
+    let discardedCard = currentArray.pop();
+    let newArray = currentArray.filter(card => {
+      return card != discardedCard
+    })
+    this.setState({ cards: [...newArray] })
   }
 
   render() {
@@ -44,11 +54,18 @@ class PlayersHand extends React.Component {
 
         <h2>Your current hand of cards!</h2>
 
-        <button
-        onClick={this.draw}
-        >
-          Draw Card
-        </button>
+        <div className="card-play-options">
+          <button
+          onClick={this.draw}
+          >
+            Draw Card
+          </button>
+          <button
+          onClick={this.discard}
+          >
+            Discard Card
+          </button>
+        </div>
       </>
     )
   }
