@@ -39,7 +39,7 @@ class PlayersHand extends React.Component {
     let currentArray = [...this.state.cards]
     let discardedCard = currentArray.pop();
     let newArray = currentArray.filter(card => {
-      return card != discardedCard
+      return card !== discardedCard
     })
     this.setState({ cards: [...newArray] })
   }
