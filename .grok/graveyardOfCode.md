@@ -70,3 +70,30 @@ Belongs to `PlayingCard.js`
     { number: '4', suit: 'heart', value: 4, id: 55, desc:"4_h"},   
     { number: '2', suit: 'heart', value: 2, id: 53, desc:"2_h"}    
   ] */ -->
+
+  
+  Belongs to `PlayersHand.js`
+
+  <!-- 
+    /*
+readCard(e) {
+    let currentArray = [...this.state.cards]
+    console.log(currentArray);
+    let discardedCard = e.target;
+    console.log(discardedCard.id)
+    let readyToToss = currentArray.filter(card => {
+      return card.id == discardedCard.id
+    })
+    console.log(readyToToss)
+  }
+  */
+
+  /* discard() {
+    let currentArray = [...this.state.cards]
+    let discardedCard = currentArray.pop();
+    let newArray = currentArray.filter(card => {
+      return card !== discardedCard
+    })
+    this.setState({ cards: [...newArray] })
+  } */
+  -->

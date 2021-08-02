@@ -7,7 +7,7 @@ export let currentGameDeck = shuffleTheDeck(gameDeck);
 //This variable stores the resulting two hands given to each player.
 let gameHands = dealTheHand(currentGameDeck);
 export let playerOneHand = gameHands.playerOneHand;
-let playerTwoHand = gameHands.playerTwoHand;
+//let playerTwoHand = gameHands.playerTwoHand;
 
 
 
@@ -53,8 +53,8 @@ class Player {
 ---*/
 
 //console.log(playerTwoHand)
-console.log(playerOneHand.length)
-console.log(currentGameDeck.length);
+//console.log(playerOneHand.length)
+//console.log(currentGameDeck.length);
 
 export let hamzaFoy = new Player('Hamza Foy');
 //hamzaFoy.getCardInfo();

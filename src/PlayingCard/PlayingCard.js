@@ -4,6 +4,10 @@ import './PlayingCard.css';
 
 
 class PlayingCard extends React.Component {
+    
+    constructor(props) {
+        super(props);
+    }
 
     render() {
         return(
@@ -14,7 +18,9 @@ class PlayingCard extends React.Component {
             suit={this.props.card.suit}
             value={this.props.card.value}
             id={this.props.card.id}
-            className="card"/>
+            className="card"
+            onClick={this.props.readCard}
+            />
         )
     }
   }
