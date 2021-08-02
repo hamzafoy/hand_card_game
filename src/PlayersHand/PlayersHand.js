@@ -16,29 +16,31 @@ class PlayersHand extends React.Component {
       discardPileValue: 0,
       deck: currentGameDeck
     }
-    //this.draw = this.draw.bind(this);
+    this.draw = this.draw.bind(this);
     this.discardACard = this.discardACard.bind(this);
     this.moveACard = this.moveACard.bind(this);
   }
 
-  /* draw() {
-    let newCard = currentGameDeck.shift();
-    this.setState({ cards: [...this.state.cards, newCard] })
-  } */
+  draw() {
+    let currentArray = [...this.state.deck]
+    console.log(currentArray);
+    let newCard = currentArray.shift();
+    console.log(newCard);
+    this.setState({ 
+      cards: [...this.state.cards, newCard],
+      deck: [...currentArray] 
+    })
+  }
 
   discardACard(e) {
     let currentArray = [...this.state.cards]
     let currentValueOfDiscards = Number(this.state.discardPileValue);
-    //console.log(currentArray);
     let discardedCard = e.target;
     let discardedCardAlt = e.nativeEvent.srcElement.alt;
     let dissectedCardData = discardedCardAlt.split(" ")
     let numToUpdateDiscardValue = Number(dissectedCardData[2])
     let newValueOfDiscards = (currentValueOfDiscards + numToUpdateDiscardValue);
-    //console.log(newValueOfDiscards)
-    //console.log(dissectedCardData[2])
     currentArray.splice(currentArray.findIndex(card => card.id == discardedCard.id), 1)
-    //console.log(currentArray)
     this.setState(
       { 
       cards: [...currentArray],
@@ -56,7 +58,6 @@ class PlayersHand extends React.Component {
     let dissectedCardData = movedCardAlt.split(" ")
     let numToUpdateSetOneValue = Number(dissectedCardData[2])
     let newValueOfSetOne = (currentValueOfSetOne + numToUpdateSetOneValue);
-    //console.log(movedCardAlt)
     currentArray.splice(currentArray.findIndex(card => card.id == movedCard.id), 1)
     this.setState(
       {
@@ -78,6 +79,8 @@ class PlayersHand extends React.Component {
     moveACard={this.moveACard}
     />
     )
+
+    let gameStart = false;
 
     let setOneValue = this.state.setOneValue;
 
@@ -120,10 +123,16 @@ class PlayersHand extends React.Component {
         </div>
 
         <div className="sets-row">
-          {setOneValue}
+          Value of your set: {setOneValue}
           <section className="first-set">
             {handOfMovedCards}
           </section>
+        </div>
+
+        <div className="buttons-row">
+          <button onClick={this.draw}>
+            Start Game!
+          </button>
         </div>
       </>
     )

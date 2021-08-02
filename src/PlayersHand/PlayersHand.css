@@ -2,7 +2,7 @@
     height: 50vh;
     background-color: lightseagreen;
     border: 5px outset darkgreen;
-    margin: 0 0 3.5vh;
+    margin: 1.5vh 1vw 1.5vh;
   }
 
 .handful-of-cards {
@@ -25,21 +25,29 @@ h2 {
 
 .sets-row {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 2vh 2vw 0;
-    min-height: 15vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: .25vh 2vw 0;
+    min-height: 16vh;
     border: 6px double red;
 }
 
 .first-set,
 .second-set,
 .third-set {
-    border: 1px solid blue;
-    min-width: 25vw;
+    display: flex;
+    flex-direction: row;
 }
 
 .card {
     height: 90px;
     width: 55px;
+}
+
+.buttons-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1vh 0 0;
 }
