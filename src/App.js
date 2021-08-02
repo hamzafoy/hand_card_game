@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
-import CardTable from './CardTable/CardTable'
+import PlayersHand from './PlayersHand/PlayersHand'
+
+
 
 class App extends React.Component {
 
@@ -8,7 +10,7 @@ class App extends React.Component {
     
     return (
       <>
-        <CardTable/>
+        <PlayersHand/>
       </>
     )
   }

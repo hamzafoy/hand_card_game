@@ -1,3 +1,10 @@
+.card-table {
+    height: 50vh;
+    background-color: lightseagreen;
+    border: 5px outset darkgreen;
+    margin: 0 0 3.5vh;
+  }
+
 .handful-of-cards {
     display: flex;
     justify-content: center;
@@ -30,4 +37,9 @@ h2 {
 .third-set {
     border: 1px solid blue;
     min-width: 25vw;
+}
+
+.card {
+    height: 90px;
+    width: 55px;
 }

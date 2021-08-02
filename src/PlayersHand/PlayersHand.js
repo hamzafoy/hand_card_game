@@ -11,64 +11,98 @@ class PlayersHand extends React.Component {
     this.state = {
       cards: playerOneHand,
       setOne: [],
-      setTwo: [],
-      setThree: []
+      setOneValue: 0,
+      discardPile: [],
+      discardPileValue: 0,
+      deck: currentGameDeck
     }
-    this.draw = this.draw.bind(this);
-    //this.discard = this.discard.bind(this);
-    this.readCard = this.readCard.bind(this);
+    //this.draw = this.draw.bind(this);
+    this.discardACard = this.discardACard.bind(this);
+    this.moveACard = this.moveACard.bind(this);
   }
 
-  draw() {
+  /* draw() {
     let newCard = currentGameDeck.shift();
     this.setState({ cards: [...this.state.cards, newCard] })
-  }
+  } */
 
-  readCard(e) {
+  discardACard(e) {
     let currentArray = [...this.state.cards]
-    console.log(currentArray);
+    let currentValueOfDiscards = Number(this.state.discardPileValue);
+    //console.log(currentArray);
     let discardedCard = e.target;
-    console.log(discardedCard.id)
+    let discardedCardAlt = e.nativeEvent.srcElement.alt;
+    let dissectedCardData = discardedCardAlt.split(" ")
+    let numToUpdateDiscardValue = Number(dissectedCardData[2])
+    let newValueOfDiscards = (currentValueOfDiscards + numToUpdateDiscardValue);
+    //console.log(newValueOfDiscards)
+    //console.log(dissectedCardData[2])
     currentArray.splice(currentArray.findIndex(card => card.id == discardedCard.id), 1)
-    console.log(currentArray)
+    //console.log(currentArray)
     this.setState(
-      { cards: [...currentArray] }
+      { 
+      cards: [...currentArray],
+      discardPile: [...this.state.discardPile, discardedCard],
+      discardPileValue: newValueOfDiscards
+    }
     )
   }
 
-  /*
-readCard(e) {
-    let currentArray = [...this.state.cards]
-    console.log(currentArray);
-    let discardedCard = e.target;
-    console.log(discardedCard.id)
-    let readyToToss = currentArray.filter(card => {
-      return card.id == discardedCard.id
-    })
-    console.log(readyToToss)
+  moveACard(e) {
+    let currentArray = [...this.state.cards];
+    let currentValueOfSetOne = Number(this.state.setOneValue);
+    let movedCard = e.target;
+    let movedCardAlt = e.nativeEvent.srcElement.alt;
+    let dissectedCardData = movedCardAlt.split(" ")
+    let numToUpdateSetOneValue = Number(dissectedCardData[2])
+    let newValueOfSetOne = (currentValueOfSetOne + numToUpdateSetOneValue);
+    //console.log(movedCardAlt)
+    currentArray.splice(currentArray.findIndex(card => card.id == movedCard.id), 1)
+    this.setState(
+      {
+        cards: [...currentArray],
+        setOne: [...this.state.setOne, movedCard],
+        setOneValue: newValueOfSetOne
+      }
+    )
   }
-  */
 
-  /* discard() {
-    let currentArray = [...this.state.cards]
-    let discardedCard = currentArray.pop();
-    let newArray = currentArray.filter(card => {
-      return card !== discardedCard
-    })
-    this.setState({ cards: [...newArray] })
-  } */
+  
 
   render() {
     let handOfCards = this.state.cards.map((card, i) =>
     <PlayingCard
     card={card}
-    key={`card_'${card.id}`}
-    readCard={this.readCard}
+    key={`card_${card.suit}_${card.id}`}
+    discardACard={this.discardACard}
+    moveACard={this.moveACard}
     />
     )
+
+    let setOneValue = this.state.setOneValue;
+
+    if (setOneValue >= 51) {
+      alert('You win!')
+    }
+    
+    let handOfDiscarded = this.state.discardPile.map(function(image) {
+      return (<img className="card" src={image.src}/>)
+    });
+
+    let handOfMovedCards = this.state.setOne.map(function(image) {
+      return (<img className="card" src={image.src}/>)
+    });
+
+    
     
     return(
       <>
+        <div className="card-table">
+          <div className="handful-of-discarded-cards">
+            {handOfDiscarded}
+          </div>
+        </div>
+
         <div className="handful-of-cards">
           {handOfCards}
         </div>
@@ -76,26 +110,19 @@ readCard(e) {
         <h2>Your current hand of cards!</h2>
 
         <div className="card-play-options">
-          <button
+
+          {/* <button
           onClick={this.draw}
           >
             Draw Card
-          </button>
-          <button
-          onClick={this.discard}
-          >
-            Discard Card
-          </button>
+          </button> */}
+
         </div>
+
         <div className="sets-row">
+          {setOneValue}
           <section className="first-set">
-
-          </section>
-          <section className="second-set">
-
-          </section>
-          <section className="third-set">
-
+            {handOfMovedCards}
           </section>
         </div>
       </>
