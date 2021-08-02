@@ -14,7 +14,9 @@ class PlayersHand extends React.Component {
       setOneValue: 0,
       discardPile: [],
       discardPileValue: 0,
-      deck: currentGameDeck
+      deck: currentGameDeck,
+      game: false,
+      turn: false
     }
     this.draw = this.draw.bind(this);
     this.discardACard = this.discardACard.bind(this);
@@ -28,8 +30,16 @@ class PlayersHand extends React.Component {
     console.log(newCard);
     this.setState({ 
       cards: [...this.state.cards, newCard],
-      deck: [...currentArray] 
+      deck: [...currentArray], 
     })
+    this.setState(prevState => ({
+      game: !prevState.game,
+      turn: !prevState.turn
+    }))
+  }
+
+  manageTurn() {
+    
   }
 
   discardACard(e) {
@@ -78,16 +88,8 @@ class PlayersHand extends React.Component {
     discardACard={this.discardACard}
     moveACard={this.moveACard}
     />
-    )
+    );
 
-    let gameStart = false;
-
-    let setOneValue = this.state.setOneValue;
-
-    if (setOneValue >= 51) {
-      alert('You win!')
-    }
-    
     let handOfDiscarded = this.state.discardPile.map(function(image) {
       return (<img className="card" src={image.src}/>)
     });
@@ -96,8 +98,16 @@ class PlayersHand extends React.Component {
       return (<img className="card" src={image.src}/>)
     });
 
-    
-    
+    let handOfCardsDisplay = (this.state.game) ? handOfCards : `Click 'Start Game' to begin!`
+
+    let setOneValue = this.state.setOneValue;
+
+    if (setOneValue >= 51) {
+      alert('You win!')
+    }
+
+    console.log(this.state.turn);
+
     return(
       <>
         <div className="card-table">
@@ -107,7 +117,7 @@ class PlayersHand extends React.Component {
         </div>
 
         <div className="handful-of-cards">
-          {handOfCards}
+          {handOfCardsDisplay}
         </div>
 
         <h2>Your current hand of cards!</h2>
@@ -132,6 +142,9 @@ class PlayersHand extends React.Component {
         <div className="buttons-row">
           <button onClick={this.draw}>
             Start Game!
+          </button>
+          <button onClick={this.manageTurn}>
+            End Turn!
           </button>
         </div>
       </>
