@@ -16,48 +16,90 @@ class PlayersHand extends React.Component {
       discardPileValue: 0,
       deck: currentGameDeck,
       game: false,
-      turn: false
+      turn: false,
+      turnCount: 0
     }
+    this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
+    this.manageTurn = this.manageTurn.bind(this);
     this.discardACard = this.discardACard.bind(this);
     this.moveACard = this.moveACard.bind(this);
   }
 
+  startGame() {
+    let currentTurnCount = Number(this.state.turnCount);
+    currentTurnCount++
+    //console.log(currentTurnCount)
+    this.setState(prevState => ({
+      game: !prevState.game,
+      turn: !prevState.turn,
+      turnCount: currentTurnCount
+    }))
+    setTimeout(this.draw, 5000);
+  }
+
   draw() {
     let currentArray = [...this.state.deck]
-    console.log(currentArray);
+    //console.log(currentArray);
     let newCard = currentArray.shift();
-    console.log(newCard);
     this.setState({ 
       cards: [...this.state.cards, newCard],
       deck: [...currentArray], 
     })
-    this.setState(prevState => ({
-      game: !prevState.game,
-      turn: !prevState.turn
-    }))
+    
   }
 
   manageTurn() {
-    
+    let currentTurnCount = Number(this.state.turnCount);
+
+    if(this.state.turn == true) {
+
+      if(this.state.discardPile.length < currentTurnCount) {
+        alert(`You must discard a card before ending your turn!`)
+      } else {
+        currentTurnCount++
+        this.setState(prevState => (
+          {
+            turn: !prevState.turn,
+            turnCount: currentTurnCount
+          }
+        ))
+      }
+
+    } else {
+      this.setState(prevState => (
+        {
+          turn: !prevState.turn
+        }
+      ))
+    }
   }
 
   discardACard(e) {
     let currentArray = [...this.state.cards]
     let currentValueOfDiscards = Number(this.state.discardPileValue);
-    let discardedCard = e.target;
-    let discardedCardAlt = e.nativeEvent.srcElement.alt;
-    let dissectedCardData = discardedCardAlt.split(" ")
-    let numToUpdateDiscardValue = Number(dissectedCardData[2])
-    let newValueOfDiscards = (currentValueOfDiscards + numToUpdateDiscardValue);
-    currentArray.splice(currentArray.findIndex(card => card.id == discardedCard.id), 1)
-    this.setState(
-      { 
-      cards: [...currentArray],
-      discardPile: [...this.state.discardPile, discardedCard],
-      discardPileValue: newValueOfDiscards
+    let currentTurnCount = Number(this.state.turnCount);
+    let discardPileSize = Number(this.state.discardPile.length + 1)
+    console.log(currentTurnCount)
+    console.log(discardPileSize)
+    if(discardPileSize > currentTurnCount) {
+      alert(`You cannot discard more than one card!`)
+    } else {
+      let discardedCard = e.target;
+      let discardedCardAlt = e.nativeEvent.srcElement.alt;
+      let dissectedCardData = discardedCardAlt.split(" ")
+      let numToUpdateDiscardValue = Number(dissectedCardData[2])
+      let newValueOfDiscards = (currentValueOfDiscards + numToUpdateDiscardValue);
+      currentArray.splice(currentArray.findIndex(card => card.id == discardedCard.id), 1)
+      this.setState(
+        { 
+        cards: [...currentArray],
+        discardPile: [...this.state.discardPile, discardedCard],
+        discardPileValue: newValueOfDiscards
+      }
+      )
     }
-    )
+    
   }
 
   moveACard(e) {
@@ -104,6 +146,7 @@ class PlayersHand extends React.Component {
 
     if (setOneValue >= 51) {
       alert('You win!')
+      this.state.game = false;
     }
 
     console.log(this.state.turn);
@@ -140,7 +183,7 @@ class PlayersHand extends React.Component {
         </div>
 
         <div className="buttons-row">
-          <button onClick={this.draw}>
+          <button onClick={this.startGame}>
             Start Game!
           </button>
           <button onClick={this.manageTurn}>
