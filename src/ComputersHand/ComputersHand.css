@@ -1,62 +1,6 @@
 .computer {
-    display: none;
-}
-
-.card-table {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 50vh;
-    background-color: lightseagreen;
-    border: 5px outset darkgreen;
-    margin: 1.5vh 1vw 1.5vh;
-}
-
-.handful-of-discarded-cards {
-    align-self: center;
-}
-
-.handful-of-cards {
-    display: flex;
-    justify-content: center;
-}
-
-h2 {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: normal;
-    font-size: 18px;
-}
-
-.sets-row {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: .25vh 2vw 0;
-    min-height: 16vh;
-    border: 6px double red;
-}
-
-.first-set,
-.second-set,
-.third-set {
-    display: flex;
-    flex-direction: row;
-}
-
-.card {
-    height: 90px;
-    width: 55px;
-}
-
-.buttons-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 1vh 0 0;
-}
-
-.turn-display {
-    margin: 0 1vw;
+    margin: 5vh 0 0;
 }

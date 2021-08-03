@@ -4,7 +4,6 @@ import { currentGameDeck, playerOneHand } from '../Logic/game_logic';
 import PlayingCard from '../PlayingCard/PlayingCard';
 
 
-
 class PlayersHand extends React.Component {
   constructor(props) {
     super(props)
@@ -14,10 +13,7 @@ class PlayersHand extends React.Component {
       setOneValue: 0,
       discardPile: [],
       discardPileValue: 0,
-      deck: currentGameDeck,
-      //game: this.props.game,
-      //turn: false,
-      turnCount: 0
+      deck: currentGameDeck
     }
     this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
@@ -28,18 +24,12 @@ class PlayersHand extends React.Component {
 
   startGame() {
     this.props.handleGame()
-    let currentTurnCount = Number(this.state.turnCount);
-    currentTurnCount++
-    this.setState({
-      turnCount: currentTurnCount
-    })
-    setTimeout(this.draw, 5000);
+    setTimeout(this.draw, 3000);
   }
 
   draw() {
     let currentArray = [...this.state.deck]
     let newCard = currentArray.shift();
-    console.log(this.props.playersTurn)
     this.setState({ 
       cards: [...this.state.cards, newCard],
       deck: [...currentArray], 
@@ -48,13 +38,12 @@ class PlayersHand extends React.Component {
   }
 
   manageTurn() {
-    let currentTurnCount = Number(this.state.turnCount);
+    let currentTurnCount = Number(this.props.turnCount);
     if(this.props.playersTurn == true) {
 
       if(this.state.discardPile.length < currentTurnCount) {
         alert(`You must discard a card before ending your turn!`)
       } else {
-        currentTurnCount++
         this.props.managePlayersTurn()
       }
 
@@ -66,10 +55,8 @@ class PlayersHand extends React.Component {
   discardACard(e) {
     let currentArray = [...this.state.cards]
     let currentValueOfDiscards = Number(this.state.discardPileValue);
-    let currentTurnCount = Number(this.state.turnCount);
+    let currentTurnCount = Number(this.props.turnCount);
     let discardPileSize = Number(this.state.discardPile.length + 1)
-    console.log(currentTurnCount)
-    console.log(discardPileSize)
     if(discardPileSize > currentTurnCount) {
       alert(`You cannot discard more than one card!`)
     } else {
@@ -87,7 +74,6 @@ class PlayersHand extends React.Component {
       }
       )
     }
-    
   }
 
   moveACard(e) {
@@ -109,7 +95,6 @@ class PlayersHand extends React.Component {
   }
 
   
-
   render() {
     let handOfCards = this.state.cards.map((card, i) =>
     <PlayingCard
@@ -135,8 +120,7 @@ class PlayersHand extends React.Component {
     let setOneValue = this.state.setOneValue;
 
     if (setOneValue >= 51) {
-      alert('You win!')
-      this.state.game = false;
+      alert('You win! Reload to restart the game.')
    }
 
     return(
@@ -151,7 +135,7 @@ class PlayersHand extends React.Component {
           {handOfCardsDisplay}
         </div>
 
-        <h2>Your current hand of cards!</h2>
+        <h2>Your current hand of cards! You have played {this.props.turnCount} turn(s)!</h2>
 
         <div className="sets-row">
           Value of your set: {setOneValue}
