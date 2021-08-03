@@ -138,10 +138,25 @@ class PlayersHand extends React.Component {
         <h2>Your current hand of cards! You have played {this.props.turnCount} turn(s)!</h2>
 
         <div className="sets-row">
-          Value of your set: {setOneValue}
+
+          <section className="game-explanation">
+            <h2 className="game-explanation__header">How to Play</h2>
+            <ul className="game-explanation__bullets">
+              <li>Click 'Start Game' when you are ready.</li>
+              <li>'Drag' a card to add it to your set.</li>
+              <li>'Double-click' a card to add it to the discard pile.</li>
+              <li>You must add 1 card to your set and discard 1 card per turn.</li>
+              <li>To end your turn, click 'End Turn!'.</li>
+              <li>To play the computer's turn, click 'Computer's Turn'</li>
+            </ul>
+          </section>
 
           <section className="first-set">
-            {handOfMovedCards}
+            <h2>Value of your set: {setOneValue}</h2>
+            <section className="set-of-cards">
+              {handOfMovedCards}
+            </section>
+            
           </section>
 
         </div>
