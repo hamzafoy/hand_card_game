@@ -1,3 +1,7 @@
+.computer {
+    display: none;
+}
+
 .card-table {
     display: flex;
     flex-direction: row;

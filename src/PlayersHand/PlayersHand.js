@@ -15,8 +15,8 @@ class PlayersHand extends React.Component {
       discardPile: [],
       discardPileValue: 0,
       deck: currentGameDeck,
-      game: false,
-      turn: false,
+      //game: this.props.game,
+      //turn: false,
       turnCount: 0
     }
     this.startGame = this.startGame.bind(this);
@@ -27,21 +27,19 @@ class PlayersHand extends React.Component {
   }
 
   startGame() {
+    this.props.handleGame()
     let currentTurnCount = Number(this.state.turnCount);
     currentTurnCount++
-    //console.log(currentTurnCount)
-    this.setState(prevState => ({
-      game: !prevState.game,
-      turn: !prevState.turn,
+    this.setState({
       turnCount: currentTurnCount
-    }))
+    })
     setTimeout(this.draw, 5000);
   }
 
   draw() {
     let currentArray = [...this.state.deck]
-    //console.log(currentArray);
     let newCard = currentArray.shift();
+    console.log(this.props.playersTurn)
     this.setState({ 
       cards: [...this.state.cards, newCard],
       deck: [...currentArray], 
@@ -51,27 +49,17 @@ class PlayersHand extends React.Component {
 
   manageTurn() {
     let currentTurnCount = Number(this.state.turnCount);
-
-    if(this.state.turn == true) {
+    if(this.props.playersTurn == true) {
 
       if(this.state.discardPile.length < currentTurnCount) {
         alert(`You must discard a card before ending your turn!`)
       } else {
         currentTurnCount++
-        this.setState(prevState => (
-          {
-            turn: !prevState.turn,
-            turnCount: currentTurnCount
-          }
-        ))
+        this.props.managePlayersTurn()
       }
 
     } else {
-      this.setState(prevState => (
-        {
-          turn: !prevState.turn
-        }
-      ))
+      alert(`Your turn is already over!`)
     }
   }
 
@@ -140,16 +128,16 @@ class PlayersHand extends React.Component {
       return (<img className="card" src={image.src}/>)
     });
 
-    let handOfCardsDisplay = (this.state.game) ? handOfCards : `Click 'Start Game' to begin!`
+    let handOfCardsDisplay = (this.props.game) ? handOfCards : `Click 'Start Game' to begin!`
+
+    let gameInSession = (this.props.playersTurn) ? `Play your turn!` : `It is not your turn.`; 
 
     let setOneValue = this.state.setOneValue;
 
     if (setOneValue >= 51) {
       alert('You win!')
       this.state.game = false;
-    }
-
-    console.log(this.state.turn);
+   }
 
     return(
       <>
@@ -165,30 +153,29 @@ class PlayersHand extends React.Component {
 
         <h2>Your current hand of cards!</h2>
 
-        <div className="card-play-options">
-
-          {/* <button
-          onClick={this.draw}
-          >
-            Draw Card
-          </button> */}
-
-        </div>
-
         <div className="sets-row">
           Value of your set: {setOneValue}
+
           <section className="first-set">
             {handOfMovedCards}
           </section>
+
         </div>
 
         <div className="buttons-row">
+
           <button onClick={this.startGame}>
             Start Game!
           </button>
+
+          <section className="turn-display">
+            {gameInSession}
+          </section>
+
           <button onClick={this.manageTurn}>
             End Turn!
           </button>
+
         </div>
       </>
     )

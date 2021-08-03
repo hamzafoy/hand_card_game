@@ -7,7 +7,7 @@ export let currentGameDeck = shuffleTheDeck(gameDeck);
 //This variable stores the resulting two hands given to each player.
 let gameHands = dealTheHand(currentGameDeck);
 export let playerOneHand = gameHands.playerOneHand;
-//let playerTwoHand = gameHands.playerTwoHand;
+export let playerTwoHand = gameHands.playerTwoHand;
 
 
 
@@ -45,17 +45,3 @@ class Player {
         this._set = newDeck;
     }
 }
-
-/*---
-    Console Log Dashboard to help with tracking progress with game logic.
-    As this project progresses, the game logic may be further modularized and put into separate folders
-    per SEPARATION OF CONCERNS
----*/
-
-//console.log(playerTwoHand)
-//console.log(playerOneHand.length)
-//console.log(currentGameDeck.length);
-
-export let hamzaFoy = new Player('Hamza Foy');
-//hamzaFoy.getCardInfo();
-//console.log(hamzaFoy)
