@@ -43,15 +43,9 @@ class App extends React.Component {
     }
   }
 
-  endGame() {
-    this.render();
-  }
-
 
   render() {   
 
-    
-    
     return (
       <>
         <PlayersHand
@@ -61,13 +55,11 @@ class App extends React.Component {
         handleGame={this.handleGame}
         managePlayersTurn={this.managePlayersTurn}
         turnCount={this.state.turnCount}
-        endGame={this.endGame}
         />
         <ComputersHand
         playersTurn={this.state.playersTurn}
         computersTurn={this.state.computersTurn}
         managePlayersTurn={this.managePlayersTurn}
-        endGame={this.endGame}
         />
       </>
     )

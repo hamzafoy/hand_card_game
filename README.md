@@ -9,16 +9,16 @@
 
 ### What is this app?
 
-*Hand* is a variant of the card game *Rummy* that my father-in-law taught me. In ode to his Palestinian & Jordanian roots, I decided to develop this app
-to demonstrate my ability both with JavaScript logic & with working with the React library.
+This is a very simplified version of **Hand**, a Jordanian card game.
 
-**My intention** with this application is to serve a multiplayer version of Hand that will hopefully allow up to 4 players to play at the same time.
-
+In order to play, you must click `Start Game`, then discard a card & add a card to your set.
+To end your turn, click `End Turn`. To play the *computer's turn*, click `Computer's Turn`.
+The computer's turn is quick, then it is your turn again in which case you must discard a card & add a card to your set. Repeat this cycle until you or the computer gets **51 points**.
 <hr>
 
 <div id='id-section2'/>
 
-### Scratchpad regarding game logic
+<!-- ### Scratchpad regarding game logic
 
 In *Hand*, each player is given **14 cards** with one player (this alternates) given an extra card.
 The player who received the extra card **must discard a card only to start the game**.
@@ -37,4 +37,4 @@ After the game starts, each turn **must consist** of. . .
 
 #### A wildcard is. . .
 The `A` of a pre-determined suit in the beginning of the game. This wildcard can be used in place of any card you may not have*<br>
-*Ex: You have a 6 [&spades;] & a 8 [&spades;] & a wildcard. That wildcard can be used as a 7 [&spades;] to complete a set.
+*Ex: You have a 6 [&spades;] & a 8 [&spades;] & a wildcard. That wildcard can be used as a 7 [&spades;] to complete a set. -->
