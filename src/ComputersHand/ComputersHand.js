@@ -51,7 +51,7 @@ class ComputersHand extends React.Component {
   
       return(
         <div className="computer">
-          <button onClick={this.computerPlay}>
+          <button className="computer-turn" onClick={this.computerPlay}>
             Computer's Turn
           </button>
         </div>

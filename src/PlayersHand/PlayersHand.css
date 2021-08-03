@@ -55,11 +55,7 @@ h2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 1vh 0 0;
-}
-
-.turn-display {
-    margin: 0 1vw;
+    margin: 1vh 0;
 }
 
 .game-explanation__header {
@@ -70,4 +66,17 @@ h2 {
 .game-explanation__bullets {
     font-size: 0.75em;
     font-style: italic;
+}
+
+.game-button {
+    margin: 0 0.5vw;
+    padding: 0.5vh 1.25vw;
+    background-color: #3581B8;
+    color: #F3F8F2;
+    transition-duration: 0.5s;
+}
+
+.game-button:hover {
+    background-color: #BFD9ED;
+    color: black;
 }

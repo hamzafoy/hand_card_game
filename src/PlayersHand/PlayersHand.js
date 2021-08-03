@@ -135,7 +135,7 @@ class PlayersHand extends React.Component {
           {handOfCardsDisplay}
         </div>
 
-        <h2>Your current hand of cards! You have played {this.props.turnCount} turn(s)!</h2>
+        <h2>Your current hand of cards! You have played {this.props.turnCount} turn(s)! {gameInSession}</h2>
 
         <div className="sets-row">
 
@@ -163,15 +163,15 @@ class PlayersHand extends React.Component {
 
         <div className="buttons-row">
 
-          <button onClick={this.startGame}>
+          <button className="game-button" onClick={this.startGame}>
             Start Game!
           </button>
 
           <section className="turn-display">
-            {gameInSession}
+            
           </section>
 
-          <button onClick={this.manageTurn}>
+          <button className="game-button" onClick={this.manageTurn}>
             End Turn!
           </button>
 
