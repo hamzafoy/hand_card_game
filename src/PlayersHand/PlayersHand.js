@@ -141,14 +141,15 @@ class PlayersHand extends React.Component {
 
           <section className="game-explanation">
             <h2 className="game-explanation__header">How to Play</h2>
-            <ul className="game-explanation__bullets">
+            <ol className="game-explanation__bullets">
               <li>Click 'Start Game' when you are ready.</li>
               <li>'Drag' a card to add it to your set.</li>
               <li>'Double-click' a card to add it to the discard pile.</li>
               <li>You must add 1 card to your set and discard 1 card per turn.</li>
               <li>To end your turn, click 'End Turn!'.</li>
               <li>To play the computer's turn, click 'Computer's Turn'</li>
-            </ul>
+              <li>Repeat steps #2-7 until you or the computer wins with 51 points!</li>
+            </ol>
           </section>
 
           <section className="first-set">
@@ -166,10 +167,6 @@ class PlayersHand extends React.Component {
           <button className="game-button" onClick={this.startGame}>
             Start Game!
           </button>
-
-          <section className="turn-display">
-            
-          </section>
 
           <button className="game-button" onClick={this.manageTurn}>
             End Turn!
