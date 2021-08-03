@@ -1,7 +1,6 @@
 import React from 'react';
 import './ComputersHand.css';
 import { currentGameDeck, playerTwoHand } from '../Logic/game_logic';
-import PlayingCard from '../PlayingCard/PlayingCard';
 
 
 
@@ -46,8 +45,8 @@ class ComputersHand extends React.Component {
       let setOneValue = this.state.setOneValue;
 
       if (setOneValue >= 51) {
-        alert('The computer wins!')
-        this.props.endGame()
+        alert('The computer wins! Reload to restart the game.')
+        
       }
   
       return(

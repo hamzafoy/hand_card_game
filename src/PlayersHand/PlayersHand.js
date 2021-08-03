@@ -106,11 +106,11 @@ class PlayersHand extends React.Component {
     );
 
     let handOfDiscarded = this.state.discardPile.map(function(image) {
-      return (<img className="card" src={image.src}/>)
+      return (<img alt="playing cards" className="card" src={image.src}/>)
     });
 
     let handOfMovedCards = this.state.setOne.map(function(image) {
-      return (<img className="card" src={image.src}/>)
+      return (<img alt="playing cards" className="card" src={image.src}/>)
     });
 
     let handOfCardsDisplay = (this.props.game) ? handOfCards : `Click 'Start Game' to begin!`
