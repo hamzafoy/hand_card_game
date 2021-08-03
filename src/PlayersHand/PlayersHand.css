@@ -15,11 +15,13 @@
 .handful-of-cards {
     display: flex;
     justify-content: center;
+    font-family: 'Georama', sans-serif;
+    font-size: 1.25em;
 }
 
 h2 {
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Roboto Slab', serif;
     font-weight: normal;
     font-size: 18px;
 }
@@ -61,11 +63,13 @@ h2 {
 .game-explanation__header {
     font-weight: bold;
     font-size: 0.85em;
+    font-family: 'Roboto Slab', serif;
 }
 
 .game-explanation__bullets {
     font-size: 0.75em;
     font-style: italic;
+    font-family: 'Georama', sans-serif;
 }
 
 .game-button {

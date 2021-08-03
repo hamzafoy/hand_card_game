@@ -24,7 +24,7 @@ class PlayersHand extends React.Component {
 
   startGame() {
     this.props.handleGame()
-    setTimeout(this.draw, 3000);
+    setTimeout(this.draw, 1500);
   }
 
   draw() {
