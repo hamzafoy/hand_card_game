@@ -12,7 +12,6 @@ class ComputersHand extends React.Component {
         setOne: [],
         setOneValue: 0,
         discardPile: [],
-        discardPileValue: 0,
         deck: currentGameDeck,
         game: false,
         computerTurn: false,
@@ -28,7 +27,6 @@ class ComputersHand extends React.Component {
       let newHand = [...this.state.cards];
       let cardToSet = newHand.pop();
       let cardToSetValue = cardToSet.value;
-      //console.log(cardToSetValue);
       let cardToDiscard = newHand.shift();
       let newValueOfSetOne = (currentValueOfSetOne + cardToSetValue);
       this.setState({

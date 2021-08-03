@@ -11,6 +11,7 @@
     background-color: #3581B8;
     color: #F3F8F2;
     transition-duration: 0.5s;
+    font-family: 'Roboto Slab', serif;
 }
 
 .computer-turn:hover {

@@ -78,6 +78,7 @@ h2 {
     background-color: #3581B8;
     color: #F3F8F2;
     transition-duration: 0.5s;
+    font-family: 'Roboto Slab', serif;
 }
 
 .game-button:hover {

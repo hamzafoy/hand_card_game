@@ -105,6 +105,8 @@ class PlayersHand extends React.Component {
     />
     );
 
+    //let startButtonConditional = 
+
     let handOfDiscarded = this.state.discardPile.map(function(image) {
       return (<img alt="playing cards" className="card" src={image.src}/>)
     });
