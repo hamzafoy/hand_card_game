@@ -18,7 +18,8 @@ class PlayersHand extends React.Component {
       discardPileValue: 0,
       landingModal: true,
       discardErrorModal: false,
-      dragToSetErrorModal: false
+      dragToSetErrorModal: false,
+      endTurnErrorModal: false
     }
     this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
@@ -28,6 +29,7 @@ class PlayersHand extends React.Component {
     this.vanishStartModal = this.vanishStartModal.bind(this);
     this.vanishDiscardModal = this.vanishDiscardModal.bind(this);
     this.vanishSetModal = this.vanishSetModal.bind(this);
+    this.vanishEndTurnModal = this.vanishEndTurnModal.bind(this);
   }
 
   /*--
@@ -60,7 +62,10 @@ class PlayersHand extends React.Component {
   manageTurn() {
     let currentTurnCount = Number(this.props.turnCount);
     if(this.state.discardPile.length < currentTurnCount) {
-      alert(`You must discard a card before ending your turn!`)
+      /* alert(`You must discard a card before ending your turn!`) */
+      this.setState(prevState => ({
+        endTurnErrorModal: !prevState.endTurnErrorModal
+      }))
       return;
     }
     if(this.props.playersTurn === true) {
@@ -153,6 +158,12 @@ class PlayersHand extends React.Component {
     }))
   }
 
+  vanishEndTurnModal() {
+    this.setState(prevState => ({
+      endTurnErrorModal: !prevState.endTurnErrorModal
+    }))
+  }
+
 
   
   render() {
@@ -181,6 +192,12 @@ class PlayersHand extends React.Component {
       </>
     )
     let modals = {
+      endTurnModal: (
+        <div className="error-modal" onClick={this.vanishEndTurnModal}>
+          <h1 className="error-modal__heading">You must discard a card before ending your turn!</h1>
+          <caption className="error-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
+        </div>
+      ),
       discardModal: (
         <div className="error-modal" onClick={this.vanishDiscardModal}>
           <h1 className="error-modal__heading">You cannot discard more than one card!</h1>
@@ -214,9 +231,10 @@ class PlayersHand extends React.Component {
     
 
     /* Ternary Operators */
-    let startModalConditional = (this.state.landingModal) ? modals.startModal : <></>
+    let endTurnModalConditional = (this.state.endTurnErrorModal) ? modals.endTurnModal : <></>
     let discardModalConditional = (this.state.discardErrorModal) ? modals.discardModal : <></>
     let setModalConditional = (this.state.dragToSetErrorModal) ? modals.setModal : <></>
+    let startModalConditional = (this.state.landingModal) ? modals.startModal : <></>
     let startButtonConditional = (this.props.game) ? <></> : buttons;
     let handOfCardsDisplay = (this.props.game) ? handOfCards : `Click 'Start Game' to begin!`;
     let gameInSession = (this.props.playersTurn) ? `Play your turn!` : `It is not your turn.`;
@@ -279,6 +297,7 @@ class PlayersHand extends React.Component {
         {startModalConditional}
         {discardModalConditional}
         {setModalConditional}
+        {endTurnModalConditional}
       </>
     )
   }
