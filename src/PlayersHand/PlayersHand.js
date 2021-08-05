@@ -13,7 +13,6 @@ class PlayersHand extends React.Component {
       setOneValue: 0,
       discardPile: [],
       discardPileValue: 0
-      /* deck: currentGameDeck */
     }
     this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
@@ -113,7 +112,7 @@ class PlayersHand extends React.Component {
     //let startButtonConditional = 
 
     let handOfDiscarded = this.state.discardPile.map(function(image) {
-      return (<img alt="playing cards" className="card" src={image.src}/>)
+      return (<img alt="playing cards" className="discarded-card" src={image.src}/>)
     });
 
     let handOfMovedCards = this.state.setOne.map(function(image) {
@@ -133,52 +132,49 @@ class PlayersHand extends React.Component {
     return(
       <>
         <div className="card-table">
-          <div className="handful-of-discarded-cards">
+          <span className="card-table__identifier">Discard Table</span>
+          <span className="card-table__shadow"></span>
+          <div className="card-table__discard-pile">
             {handOfDiscarded}
           </div>
         </div>
 
-        <div className="handful-of-cards">
-          {handOfCardsDisplay}
+        <div className="game-display">
+          <section className="game-display__current-hand">
+            {handOfCardsDisplay}
+          </section>
+          <h2 className="game-display__text">Your current hand of cards! You have played {this.props.turnCount} turn(s)! {gameInSession}</h2>
         </div>
 
-        <h2>Your current hand of cards! You have played {this.props.turnCount} turn(s)! {gameInSession}</h2>
-
         <div className="sets-row">
-
           <section className="game-explanation">
             <h2 className="game-explanation__header">How to Play</h2>
             <ol className="game-explanation__bullets">
-              <li>Click 'Start Game' when you are ready.</li>
-              <li>'Drag' a card to add it to your set.</li>
-              <li>'Double-click' a card to add it to the discard pile.</li>
-              <li>You must add 1 card to your set and discard 1 card per turn.</li>
+              <li>Click 'Start Game' when you are ready to start a new game.</li>
+              <li>'Drag' a card to add it to your set, 'double-click' a card to discard.</li>
+              <li>You must add 1 card to your set &amp; discard 1 card per turn.</li>
               <li>To end your turn, click 'End Turn!'.</li>
-              <li>To play the computer's turn, click 'Computer's Turn'</li>
-              <li>Repeat steps #2-7 until you or the computer wins with 51 points!</li>
+              <li>Wait until your turn to repeat steps #1-4.</li>
+              <li>Between you &amp; the computer, first to 51 points in their set wins!</li>
             </ol>
           </section>
 
-          <section className="first-set">
-            <h2>Value of your set: {setOneValue}</h2>
-            <section className="set-of-cards">
+          <section className="set-display">
+            <h2 className="set-display__score">Your Set - Value of your set: {setOneValue}</h2>
+            <section className="set-display__moved-cards">
               {handOfMovedCards}
             </section>
-            
           </section>
 
         </div>
 
         <div className="buttons-row">
-
-          <button className="game-button" onClick={this.startGame}>
+          <button className="buttons-row__button" onClick={this.startGame}>
             Start Game!
           </button>
-
-          <button className="game-button" onClick={this.manageTurn}>
+          <button className="buttons-row__button" onClick={this.manageTurn}>
             End Turn!
           </button>
-
         </div>
       </>
     )
