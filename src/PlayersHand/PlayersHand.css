@@ -1,79 +1,5 @@
 /* Component Styles */
 
-.landing-page-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -250px;
-    margin-left: -450px;
-    z-index: 10;
-    height: 500px;
-    width: 900px;
-    background-color: #8CA0BA;
-    opacity: 0.97;
-    border-radius: 7px;
-}
-
-.landing-page-modal__heading {
-    opacity: 0.85;
-    font-family: 'Georama', sans-serif;
-    font-size: 1.15em;
-    text-align: center;
-}
-
-.landing-page-modal__text {
-    opacity: 0.75;
-    font-family: 'Georama', sans-serif;
-    font-size: 0.95em;
-    text-align: left;
-    margin: 0 10vw;
-}
-
-.landing-page-modal__caption {
-    opacity: 0.65;
-    font-family: 'Georama', sans-serif;
-    font-size: 0.85em;
-    text-align: center;
-    font-style: italic;
-    padding: 10vh 0 0;
-}
-
-.error-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -250px;
-    z-index: 10;
-    height: 200px;
-    width: 500px;
-    background-color: #8CA0BA;
-    opacity: 0.97;
-    border-radius: 7px;
-}
-
-.error-modal__heading {
-    opacity: 0.85;
-    font-family: 'Georama', sans-serif;
-    font-size: 1.15em;
-    text-align: center;
-}
-
-.error-modal__caption {
-    opacity: 0.65;
-    font-family: 'Georama', sans-serif;
-    font-size: 0.85em;
-    text-align: center;
-    font-style: italic;
-    padding: 10vh 0 0;
-}
-
 .card-table {
     display: flex;
     flex-direction: row;
@@ -252,4 +178,81 @@
     height: 120px;
     width: 95px;
     transform: perspective(1000px) rotateX(15deg);
+}
+
+
+
+/* Modal Styles */
+
+.landing-page-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    background-color: #C0DAED;
+    opacity: 0.925;
+    border-radius: 7px;
+    transition-duration: 10s;
+}
+
+.landing-page-modal__heading {
+    opacity: 0.85;
+    font-family: 'Georama', sans-serif;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+.landing-page-modal__text {
+    opacity: 0.75;
+    font-family: 'Georama', sans-serif;
+    font-size: 0.95em;
+    text-align: left;
+    margin: 0 27.5vw;
+}
+
+.landing-page-modal__caption {
+    opacity: 0.65;
+    font-family: 'Georama', sans-serif;
+    font-size: 0.85em;
+    text-align: center;
+    font-style: italic;
+    padding: 10vh 0 0;
+}
+
+.error-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -400px;
+    z-index: 10;
+    height: 200px;
+    width: 800px;
+    background-color: #C0DAED;
+    opacity: 0.97;
+    border-radius: 7px;
+}
+
+.error-modal__heading {
+    opacity: 0.85;
+    font-family: 'Georama', sans-serif;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+.error-modal__caption {
+    opacity: 0.65;
+    font-family: 'Georama', sans-serif;
+    font-size: 0.85em;
+    text-align: center;
+    font-style: italic;
+    padding: 10vh 0 0;
 }

@@ -172,6 +172,14 @@ class PlayersHand extends React.Component {
       return (<img alt="playing cards" className="card" src={image.src}/>)
     });
 
+    /* Button & Modal Renderings */
+    let buttons = (
+      <>
+        <button className="buttons-row__button" onClick={this.startGame}>
+          Start Game!
+        </button>
+      </>
+    )
     let modals = {
       discardModal: (
         <div className="error-modal" onClick={this.vanishDiscardModal}>
@@ -184,37 +192,29 @@ class PlayersHand extends React.Component {
           <h1 className="error-modal__heading">You cannot move more than one card to your set!</h1>
           <caption className="error-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
         </div>
+      ),
+      startModal: (
+        <div className="landing-page-modal" onClick={this.vanishStartModal}>
+            <h1 className="landing-page-modal__heading">Welcome to the Hand Card Game</h1>
+            <p className="landing-page-modal__text">
+              This card game is a very simplified version of Hand, a Jordanian variant similar to
+              Rummy. The objective of the game, played between you &amp; the computer, is to reach
+              51 points in your set first. You can only add 1 card to your set &amp; discard 1 card
+              to the discard pile per turn.
+              <br/>
+              <br/>
+              Card values are as follows: 2-10 are worth 2-10 points respectively. J, Q, K are worth
+              10 points &amp; A is worth 11 points.
+            </p>
+            <caption className="landing-page-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
+          </div>
       )
     }
 
-    /* Button & Modal Renderings */
-    let buttons = (
-      <>
-        <button className="buttons-row__button" onClick={this.startGame}>
-          Start Game!
-        </button>
-      </>
-    )
-    let startModal = (
-      <div className="landing-page-modal" onClick={this.vanishStartModal}>
-          <h1 className="landing-page-modal__heading">Welcome to the Hand Card Game</h1>
-          <p className="landing-page-modal__text">
-            This card game is a very simplified version of Hand, a Jordanian variant similar to
-            Rummy. The objective of the game, played between you &amp; the computer, is to reach
-            51 points in your set first. You can only add 1 card to your set &amp; discard 1 card
-            to the discard pile per turn.
-            <br/>
-            <br/>
-            Card values are as follows: 2-10 are worth 2-10 points respectively. J, Q, K are worth
-            10 points &amp; A is worth 11 points.
-          </p>
-          <caption className="landing-page-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
-        </div>
-    );
-
+    
 
     /* Ternary Operators */
-    let startModalConditional = (this.state.landingModal) ? startModal : <></>
+    let startModalConditional = (this.state.landingModal) ? modals.startModal : <></>
     let discardModalConditional = (this.state.discardErrorModal) ? modals.discardModal : <></>
     let setModalConditional = (this.state.dragToSetErrorModal) ? modals.setModal : <></>
     let startButtonConditional = (this.props.game) ? <></> : buttons;
