@@ -8,9 +8,12 @@ class PlayersHand extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      //cards: The player's current hand
       cards: playerOneHand,
+      //setOne, setOneValue: Where the player stores his/her cards needed to meet the win requirement.
       setOne: [],
       setOneValue: 0,
+      //discardPile, discardPileValue: The cards that the player has to discard.
       discardPile: [],
       discardPileValue: 0
     }
@@ -21,21 +24,33 @@ class PlayersHand extends React.Component {
     this.moveACard = this.moveACard.bind(this);
   }
 
+  /*--
+  This method passes data back to the App/Parent, through the callback `.handleGame()`
+  which starts the turn counter and switches the boolean btwn player & computer turns.
+  --*/
   startGame() {
     this.props.handleGame()
     setTimeout(this.draw, 1500);
   }
 
+  /*--
+  This method draws a card from the deck held in the App/Parent component's state and
+  adds it to the player's current hand.
+  --*/
   draw() {
     let currentArray = [...this.props.deck]
     let newCard = currentArray.shift();
     this.setState({ 
-      cards: [...this.state.cards, newCard],
-      deck: [...currentArray], 
+      cards: [...this.state.cards, newCard]
     })
-    
   }
 
+  /*--
+  This method, using conditional logic, ensures that the player does not end his/her turn
+  without having discarded a card. If the player has at least discarded a card, then another
+  callback function is executed which switches the boolean values to indicate to the program
+  that the player's turn is over and the computer's turn will begin.
+  --*/
   manageTurn() {
     let currentTurnCount = Number(this.props.turnCount);
     if(this.state.discardPile.length < currentTurnCount) {
@@ -50,6 +65,10 @@ class PlayersHand extends React.Component {
     }
   }
 
+  /*--
+  This method will discard a card that is double-clicked by the player. This method also, with
+  conditional statements, helps regulate the amount of cards a player can discard per turn.
+  --*/
   discardACard(e) {
     let currentArray = [...this.state.cards]
     let currentValueOfDiscards = Number(this.state.discardPileValue);
@@ -74,6 +93,12 @@ class PlayersHand extends React.Component {
     }
   }
 
+  /*--
+  This method will move a card to the player's set, a necessity to meet the winning condition,
+  by dragging the card with the mouse. The application will read the value of the card and add it
+  to the setOneValue. The use of conditional statements regulates the player's ability to add more
+  than one card to his/her set.
+  --*/
   moveACard(e) {
     let currentArray = [...this.state.cards];
     let currentValueOfSetOne = Number(this.state.setOneValue);
@@ -109,7 +134,15 @@ class PlayersHand extends React.Component {
     />
     );
 
-    //let startButtonConditional = 
+    let buttons = (
+      <>
+        <button className="buttons-row__button" onClick={this.startGame}>
+          Start Game!
+        </button>
+      </>
+    )
+
+    let startButtonConditional = (this.props.game) ? <></> : buttons;
 
     let handOfDiscarded = this.state.discardPile.map(function(image) {
       return (<img alt="playing cards" className="discarded-card" src={image.src}/>)
@@ -169,12 +202,10 @@ class PlayersHand extends React.Component {
         </div>
 
         <div className="buttons-row">
-          <button className="buttons-row__button" onClick={this.startGame}>
-            Start Game!
-          </button>
+          {startButtonConditional}
           <button className="buttons-row__button" onClick={this.manageTurn}>
-            End Turn!
-          </button>
+          End Turn!
+        </button>
         </div>
       </>
     )

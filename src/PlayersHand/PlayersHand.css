@@ -1,6 +1,5 @@
 /* Component Styles */
 
-
 .card-table {
     display: flex;
     flex-direction: row;
@@ -12,6 +11,7 @@
     margin: 1.5vh 3vw 3.5vh;
     transform: perspective(1000px) rotateX(10deg);
 }
+
 
 .card-table__shadow,
 .card-table__identifier {
@@ -25,6 +25,7 @@
     transform: translateY(3deg) perspective(1000px) rotateX(10deg);
 }
 
+
 .card-table__identifier {
     display: flex;
     justify-content: center;
@@ -32,10 +33,12 @@
     opacity: 0.35;
 }
 
+
 .card-table__discard-pile {
     align-self: center;
     transform: perspective(1000px) rotateX(10deg);
 }
+
 
 .game-display {
     display: flex;
@@ -45,11 +48,13 @@
     font-size: 1.15em;
 }
 
+
 .game-display__current-hand {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
 
 .game-display__text {
     text-align: center;
@@ -57,6 +62,7 @@
     font-weight: normal;
     font-size: 1em;
 }
+
 
 .sets-row {
     display: flex;
@@ -69,11 +75,13 @@
     border: 4px double #F5ADA3;
 }
 
+
 .game-explanation__header {
     font-weight: bold;
     font-size: 0.85em;
     font-family: 'Roboto Slab', serif;
 }
+
 
 .game-explanation__bullets {
     font-size: 0.75em;
@@ -81,10 +89,12 @@
     font-family: 'Georama', sans-serif;
 }
 
+
 .set-display {
     display: flex;
     flex-direction: column;
 }
+
 
 .set-display__score {
     font-weight: bold;
@@ -92,10 +102,12 @@
     font-family: 'Roboto Slab', serif;
 }
 
+
 .set-display__moved-cards {
     display: flex;
     flex-direction: row;
 }
+
 
 .buttons-row {
     display: flex;
@@ -103,6 +115,7 @@
     justify-content: center;
     margin: 2vh 0 0;
 }
+
 
 .buttons-row__button {
     margin: 0 0.5vw;
@@ -113,18 +126,21 @@
     font-family: 'Roboto Slab', serif;
 }
 
+
 .buttons-row__button:hover {
     background-color: #B7C8E1;
     color: black;
 }
 
-/* Card Styles */
 
+
+/* Card Styles */
 
 .card {
     height: 90px;
     width: 55px;
 }
+
 
 .discarded-card {
     height: 120px;
