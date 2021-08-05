@@ -137,3 +137,20 @@ readCard(e) {
     }
 }
   -->
+
+  Belongs to `App.js`
+
+<!-- managePlayersTurn() {
+  this.setState(prevState => ({
+    playersTurn: !prevState.playersTurn,
+    computersTurn: !prevState.computersTurn
+  }))
+  if(this.state.playersTurn == true) {
+    /* let currentTurnCount = Number(this.state.turnCount);
+    currentTurnCount++
+    this.setState({
+      turnCount: currentTurnCount
+    }) */
+    setTimeout(this.manageComputersTurn, 1500)
+  }
+} -->

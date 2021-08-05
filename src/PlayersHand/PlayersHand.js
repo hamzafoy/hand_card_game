@@ -1,6 +1,6 @@
 import React from 'react';
 import './PlayersHand.css';
-import { currentGameDeck, playerOneHand } from '../Logic/game_logic';
+import { playerOneHand } from '../Logic/game_logic';
 import PlayingCard from '../PlayingCard/PlayingCard';
 
 
@@ -12,8 +12,8 @@ class PlayersHand extends React.Component {
       setOne: [],
       setOneValue: 0,
       discardPile: [],
-      discardPileValue: 0,
-      deck: currentGameDeck
+      discardPileValue: 0
+      /* deck: currentGameDeck */
     }
     this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
@@ -28,7 +28,7 @@ class PlayersHand extends React.Component {
   }
 
   draw() {
-    let currentArray = [...this.state.deck]
+    let currentArray = [...this.props.deck]
     let newCard = currentArray.shift();
     this.setState({ 
       cards: [...this.state.cards, newCard],
@@ -39,14 +39,13 @@ class PlayersHand extends React.Component {
 
   manageTurn() {
     let currentTurnCount = Number(this.props.turnCount);
-    if(this.props.playersTurn == true) {
-
-      if(this.state.discardPile.length < currentTurnCount) {
-        alert(`You must discard a card before ending your turn!`)
-      } else {
-        this.props.managePlayersTurn()
-      }
-
+    if(this.state.discardPile.length < currentTurnCount) {
+      alert(`You must discard a card before ending your turn!`)
+      return;
+    }
+    if(this.props.playersTurn === true) {
+    this.props.managePlayersTurn()
+    setTimeout(this.draw, 1600);
     } else {
       alert(`Your turn is already over!`)
     }
@@ -98,7 +97,6 @@ class PlayersHand extends React.Component {
         }
       )
     }
-    
   }
 
   

@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import PlayersHand from './PlayersHand/PlayersHand'
-import ComputersHand from './ComputersHand/ComputersHand'
-
+import { currentGameDeck, playerTwoHand } from './Logic/game_logic';
 
 
 class App extends React.Component {
@@ -12,11 +11,18 @@ class App extends React.Component {
       playersTurn: false,
       computersTurn: false,
       game: false,
-      turnCount: 0
+      turnCount: 0,
+      playerActionCount: 0,
+      cards: playerTwoHand,
+      setTwo: [],
+      setTwoValue: 0,
+      discardPile: [],
+      deck: currentGameDeck
     }
 
     this.handleGame = this.handleGame.bind(this);
     this.managePlayersTurn = this.managePlayersTurn.bind(this);
+    this.manageComputersTurn = this.manageComputersTurn.bind(this);
   }
 
   handleGame() {
@@ -30,21 +36,48 @@ class App extends React.Component {
   }
 
   managePlayersTurn() {
-    this.setState(prevState => ({
-      playersTurn: !prevState.playersTurn,
-      computersTurn: !prevState.computersTurn
-    }))
-    if(this.state.playersTurn == true) {
-      let currentTurnCount = Number(this.state.turnCount);
-      currentTurnCount++
-      this.setState({
-        turnCount: currentTurnCount
-      })
+    if(this.state.playersTurn === true) {
+      this.setState(prevState => ({
+        playersTurn: !prevState.playersTurn,
+        computersTurn: !prevState.computersTurn
+      }))
+      setTimeout(this.manageComputersTurn, 1500)
     }
+  }
+
+  manageComputersTurn() {
+    let currentValueOfSetTwo = Number(this.state.setTwoValue);
+    let deckArray = [...this.state.deck];
+    let newCard = deckArray.shift();
+    let newHand = [...this.state.cards];
+    let cardToSet = newHand.pop();
+    let cardToSetValue = cardToSet.value;
+    let cardToDiscard = newHand.shift();
+    let newValueOfSetTwo = (currentValueOfSetTwo + cardToSetValue);
+    let currentTurnCount = Number(this.state.turnCount);
+    currentTurnCount++
+    this.setState(prevState => ({
+      cards: [...newHand, newCard],
+      deck: [...deckArray],
+      setTwo: [...this.state.setTwo, cardToSet],
+      setTwoValue: newValueOfSetTwo,
+      discardPile: [...this.state.discardPile, cardToDiscard],
+      playersTurn: !prevState.playersTurn,
+      computersTurn: !prevState.computersTurn,
+      turnCount: currentTurnCount
+    }))
+    
   }
 
 
   render() {   
+
+    let setOneValue = this.state.setOneValue;
+
+    if (setOneValue >= 51) {
+      alert('The computer wins! Reload to restart the game.')
+      
+    }
 
     return (
       <>
@@ -55,11 +88,7 @@ class App extends React.Component {
         handleGame={this.handleGame}
         managePlayersTurn={this.managePlayersTurn}
         turnCount={this.state.turnCount}
-        />
-        <ComputersHand
-        playersTurn={this.state.playersTurn}
-        computersTurn={this.state.computersTurn}
-        managePlayersTurn={this.managePlayersTurn}
+        deck={this.state.deck}
         />
       </>
     )
