@@ -15,13 +15,19 @@ class PlayersHand extends React.Component {
       setOneValue: 0,
       //discardPile, discardPileValue: The cards that the player has to discard.
       discardPile: [],
-      discardPileValue: 0
+      discardPileValue: 0,
+      landingModal: true,
+      discardErrorModal: false,
+      dragToSetErrorModal: false
     }
     this.startGame = this.startGame.bind(this);
     this.draw = this.draw.bind(this);
     this.manageTurn = this.manageTurn.bind(this);
     this.discardACard = this.discardACard.bind(this);
     this.moveACard = this.moveACard.bind(this);
+    this.vanishStartModal = this.vanishStartModal.bind(this);
+    this.vanishDiscardModal = this.vanishDiscardModal.bind(this);
+    this.vanishSetModal = this.vanishSetModal.bind(this);
   }
 
   /*--
@@ -75,7 +81,10 @@ class PlayersHand extends React.Component {
     let currentTurnCount = Number(this.props.turnCount);
     let discardPileSize = Number(this.state.discardPile.length + 1);
     if(discardPileSize > currentTurnCount) {
-      alert(`You cannot discard more than one card!`)
+      /* alert(`You cannot discard more than one card!`) */
+      this.setState(prevState => ({
+        discardErrorModal: !prevState.discardErrorModal
+      }))
     } else {
       let discardedCard = e.target;
       let discardedCardAlt = e.nativeEvent.srcElement.alt;
@@ -105,7 +114,10 @@ class PlayersHand extends React.Component {
     let currentTurnCount = Number(this.props.turnCount);
     let setOnePileSize = Number(this.state.setOne.length + 1);
     if(setOnePileSize > currentTurnCount) {
-      alert(`You cannot move more than one card to your set!`)
+      /* alert(`You cannot move more than one card to your set!`) */
+      this.setState(prevState => ({
+        dragToSetErrorModal: !prevState.dragToSetErrorModal
+      }))
     } else {
       let movedCard = e.target;
       let movedCardAlt = e.nativeEvent.srcElement.alt;
@@ -123,8 +135,28 @@ class PlayersHand extends React.Component {
     }
   }
 
+  vanishStartModal() {
+    this.setState(prevState => ({
+      landingModal: !prevState.landingModal
+    }))
+  }
+
+  vanishDiscardModal() {
+    this.setState(prevState => ({
+      discardErrorModal: !prevState.discardErrorModal
+    }))
+  }
+
+  vanishSetModal() {
+    this.setState(prevState => ({
+      dragToSetErrorModal: !prevState.dragToSetErrorModal
+    }))
+  }
+
+
   
   render() {
+    /* Card Renderings */
     let handOfCards = this.state.cards.map((card, i) =>
     <PlayingCard
     card={card}
@@ -133,7 +165,29 @@ class PlayersHand extends React.Component {
     moveACard={this.moveACard}
     />
     );
+    let handOfDiscarded = this.state.discardPile.map(function(image) {
+      return (<img alt="playing cards" className="discarded-card" src={image.src}/>)
+    });
+    let handOfMovedCards = this.state.setOne.map(function(image) {
+      return (<img alt="playing cards" className="card" src={image.src}/>)
+    });
 
+    let modals = {
+      discardModal: (
+        <div className="error-modal" onClick={this.vanishDiscardModal}>
+          <h1 className="error-modal__heading">You cannot discard more than one card!</h1>
+          <caption className="error-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
+        </div>
+      ),
+      setModal: (
+        <div className="error-modal" onClick={this.vanishSetModal}>
+          <h1 className="error-modal__heading">You cannot move more than one card to your set!</h1>
+          <caption className="error-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
+        </div>
+      )
+    }
+
+    /* Button & Modal Renderings */
     let buttons = (
       <>
         <button className="buttons-row__button" onClick={this.startGame}>
@@ -141,26 +195,40 @@ class PlayersHand extends React.Component {
         </button>
       </>
     )
+    let startModal = (
+      <div className="landing-page-modal" onClick={this.vanishStartModal}>
+          <h1 className="landing-page-modal__heading">Welcome to the Hand Card Game</h1>
+          <p className="landing-page-modal__text">
+            This card game is a very simplified version of Hand, a Jordanian variant similar to
+            Rummy. The objective of the game, played between you &amp; the computer, is to reach
+            51 points in your set first. You can only add 1 card to your set &amp; discard 1 card
+            to the discard pile per turn.
+            <br/>
+            <br/>
+            Card values are as follows: 2-10 are worth 2-10 points respectively. J, Q, K are worth
+            10 points &amp; A is worth 11 points.
+          </p>
+          <caption className="landing-page-modal__caption">Click anywhere in the modal to continue to the game. . .</caption>
+        </div>
+    );
 
+
+    /* Ternary Operators */
+    let startModalConditional = (this.state.landingModal) ? startModal : <></>
+    let discardModalConditional = (this.state.discardErrorModal) ? modals.discardModal : <></>
+    let setModalConditional = (this.state.dragToSetErrorModal) ? modals.setModal : <></>
     let startButtonConditional = (this.props.game) ? <></> : buttons;
+    let handOfCardsDisplay = (this.props.game) ? handOfCards : `Click 'Start Game' to begin!`;
+    let gameInSession = (this.props.playersTurn) ? `Play your turn!` : `It is not your turn.`;
+    
 
-    let handOfDiscarded = this.state.discardPile.map(function(image) {
-      return (<img alt="playing cards" className="discarded-card" src={image.src}/>)
-    });
-
-    let handOfMovedCards = this.state.setOne.map(function(image) {
-      return (<img alt="playing cards" className="card" src={image.src}/>)
-    });
-
-    let handOfCardsDisplay = (this.props.game) ? handOfCards : `Click 'Start Game' to begin!`
-
-    let gameInSession = (this.props.playersTurn) ? `Play your turn!` : `It is not your turn.`; 
-
+  
+    /* Win Condition for Player */
     let setOneValue = this.state.setOneValue;
-
     if (setOneValue >= 51) {
       alert('You win! Reload to restart the game.')
    }
+
 
     return(
       <>
@@ -207,6 +275,10 @@ class PlayersHand extends React.Component {
           End Turn!
         </button>
         </div>
+
+        {startModalConditional}
+        {discardModalConditional}
+        {setModalConditional}
       </>
     )
   }
