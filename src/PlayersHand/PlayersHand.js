@@ -56,7 +56,7 @@ class PlayersHand extends React.Component {
     let currentArray = [...this.state.cards]
     let currentValueOfDiscards = Number(this.state.discardPileValue);
     let currentTurnCount = Number(this.props.turnCount);
-    let discardPileSize = Number(this.state.discardPile.length + 1)
+    let discardPileSize = Number(this.state.discardPile.length + 1);
     if(discardPileSize > currentTurnCount) {
       alert(`You cannot discard more than one card!`)
     } else {
@@ -79,19 +79,26 @@ class PlayersHand extends React.Component {
   moveACard(e) {
     let currentArray = [...this.state.cards];
     let currentValueOfSetOne = Number(this.state.setOneValue);
-    let movedCard = e.target;
-    let movedCardAlt = e.nativeEvent.srcElement.alt;
-    let dissectedCardData = movedCardAlt.split(" ")
-    let numToUpdateSetOneValue = Number(dissectedCardData[2])
-    let newValueOfSetOne = (currentValueOfSetOne + numToUpdateSetOneValue);
-    currentArray.splice(currentArray.findIndex(card => card.id == movedCard.id), 1)
-    this.setState(
-      {
-        cards: [...currentArray],
-        setOne: [...this.state.setOne, movedCard],
-        setOneValue: newValueOfSetOne
-      }
-    )
+    let currentTurnCount = Number(this.props.turnCount);
+    let setOnePileSize = Number(this.state.setOne.length + 1);
+    if(setOnePileSize > currentTurnCount) {
+      alert(`You cannot move more than one card to your set!`)
+    } else {
+      let movedCard = e.target;
+      let movedCardAlt = e.nativeEvent.srcElement.alt;
+      let dissectedCardData = movedCardAlt.split(" ")
+      let numToUpdateSetOneValue = Number(dissectedCardData[2])
+      let newValueOfSetOne = (currentValueOfSetOne + numToUpdateSetOneValue);
+      currentArray.splice(currentArray.findIndex(card => card.id == movedCard.id), 1)
+      this.setState(
+        {
+          cards: [...currentArray],
+          setOne: [...this.state.setOne, movedCard],
+          setOneValue: newValueOfSetOne
+        }
+      )
+    }
+    
   }
 
   
