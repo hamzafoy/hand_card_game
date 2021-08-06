@@ -1,7 +1,5 @@
 ## Table of Contents
 1. [What is this app?](#id-section1)
-2. [Checklist towards Completion](#id-section2)
-3. [How to run the app](#id-section3)
 
 <hr>
 
@@ -11,11 +9,9 @@
 
 This is a very simplified version of **Hand**, a Jordanian card game.
 
-In order to play, you must click `Start Game`, then discard a card & add a card to your set.
-To end your turn, click `End Turn`. To play the *computer's turn*, click `Computer's Turn`.
-The computer's turn is quick, then it is your turn again in which case you must discard a card & add a card to your set. Repeat this cycle until you or the computer gets **51 points**.
+In order to play, you must click `Start Game`. In this game, you must get **51** points before the computer does. You can discard only *1* card per turn & add only *1* card to your set per turn. To end your turn, click `End Turn`.
 
-This app is only intended for the desktop/laptop/monitor viewports.
+This app is only intended for the desktop/laptop/monitor viewports. This repo will remain in its condition as a submission to [Mintbean.io](https://mintbean.io/meets?sort=upcoming)'s Hiring Hackathon in late July 2021.
 
 <hr>
 
