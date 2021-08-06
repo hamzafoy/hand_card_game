@@ -273,7 +273,7 @@ class PlayersHand extends React.Component {
               <li>'Drag' a card to add it to your set, 'double-click' a card to discard.</li>
               <li>You must add 1 card to your set &amp; discard 1 card per turn.</li>
               <li>To end your turn, click 'End Turn!'.</li>
-              <li>Wait until your turn to repeat steps #1-4.</li>
+              <li>Wait until your turn to repeat steps #2-4.</li>
               <li>Between you &amp; the computer, first to 51 points in their set wins!</li>
             </ol>
           </section>

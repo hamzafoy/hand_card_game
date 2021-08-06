@@ -71,13 +71,11 @@ class App extends React.Component {
 
 
   render() {   
-
-    let setOneValue = this.state.setOneValue;
-
-    if (setOneValue >= 51) {
+    let setTwoValue = this.state.setTwoValue;
+    if (setTwoValue >= 51) {
       alert('The computer wins! Reload to restart the game.')
-      
     }
+
 
     return (
       <>
