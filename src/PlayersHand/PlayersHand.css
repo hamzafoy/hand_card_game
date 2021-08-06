@@ -168,9 +168,15 @@
 
 /* Card Styles */
 
+@keyframes initialLoad {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 .card {
     height: 90px;
     width: 55px;
+    animation: initialLoad 2s;
 }
 
 
@@ -200,12 +206,14 @@
     transition-duration: 10s;
 }
 
+
 .landing-page-modal__heading {
     opacity: 0.85;
     font-family: 'Georama', sans-serif;
     font-size: 1.15em;
     text-align: center;
 }
+
 
 .landing-page-modal__text {
     opacity: 0.75;
@@ -215,6 +223,7 @@
     margin: 0 27.5vw;
 }
 
+
 .landing-page-modal__caption {
     opacity: 0.65;
     font-family: 'Georama', sans-serif;
@@ -223,6 +232,7 @@
     font-style: italic;
     padding: 10vh 0 0;
 }
+
 
 .error-modal {
     display: flex;
@@ -241,12 +251,14 @@
     border-radius: 7px;
 }
 
+
 .error-modal__heading {
     opacity: 0.85;
     font-family: 'Georama', sans-serif;
     font-size: 1.15em;
     text-align: center;
 }
+
 
 .error-modal__caption {
     opacity: 0.65;
