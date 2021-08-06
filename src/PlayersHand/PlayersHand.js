@@ -180,7 +180,7 @@ class PlayersHand extends React.Component {
       return (<img alt="playing cards" className="discarded-card" src={image.src}/>)
     });
     let handOfMovedCards = this.state.setOne.map(function(image) {
-      return (<img alt="playing cards" className="card" src={image.src}/>)
+      return (<img alt="playing cards" className="moved-card" src={image.src}/>)
     });
 
     /* Button & Modal Renderings */

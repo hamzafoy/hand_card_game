@@ -176,7 +176,7 @@
 .card {
     height: 90px;
     width: 55px;
-    animation: initialLoad 2s;
+    animation: initialLoad 3.5s;
 }
 
 
@@ -184,6 +184,12 @@
     height: 120px;
     width: 95px;
     transform: perspective(1000px) rotateX(15deg);
+}
+
+
+.moved-card {
+    height: 90px;
+    width: 55px;
 }
 
 
